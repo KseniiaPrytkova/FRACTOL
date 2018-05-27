@@ -23,11 +23,10 @@ ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_wordcount.c ft_substrcmp.c f
 ft_isspace.c\
 
 OBJECTS = *.o
-
 CC = gcc
 WILDCARDS = -Wall -Werror -Wextra
 OBJECTS = $(SOURCES:.c=.o)
-INCLUDES = /libft.h
+INCLUDES = ./includes
 
 %.o: %.c
 		$(CC) $(WILDCARDS) -I $(INCLUDES) -o $@ -c $<
