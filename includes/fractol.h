@@ -16,16 +16,18 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include <math.h>
-# include "../includes/libft.h"
+# include "../libft/libft.h"
 
 # include <stdio.h> /* for printf */
 
-# define WIDTH 		1200
-# define HEIGHT		800
+// # define WIDTH 		1200
+// # define HEIGHT		800
+# define WIDTH 		360
+# define HEIGHT		360
 
 typedef struct		s_env 
 {
-	void		*mlx;
-	void		*win;
+	void			*mlx_ptr;
+	void			*win_ptr;
 }					t_env;
 #endif
