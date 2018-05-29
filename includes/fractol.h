@@ -22,12 +22,26 @@
 
 // # define WIDTH 		1200
 // # define HEIGHT		800
-# define WIDTH 		600
-# define HEIGHT		400
+# define 	WIDTH 		1200
+# define 	HEIGHT		800
+# define 	MAX 		100
+
+
 
 typedef struct		s_env 
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
+	double			min_2_re;
+	double			max_2_re;
+	double			min_2_im;
+	double			max_2_im;
+
+
 }					t_env;
+
+int			mandelbrot_math(t_env *e, int x, int y);
+double		ft_map(double variable_1, double min_1, double max_1, double min_2, double max_2);
+int			key_draw(int keycode);
+
 #endif
