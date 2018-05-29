@@ -29,7 +29,7 @@ $(NAME): $(SRO)
 	$(CC) $(FLAG) -I$(INCLUDE) $(SRC) -lmlx -framework OpenGL -framework Appkit ./libft/libft.a -o $(NAME)
 	# ar rc $(NAME) $(SRO)
 
-%.o: %.c ./includes/fdf.h
+%.o: %.c ./includes/fractol.h
 	$(CC) $(FLAG) -c -o $@ $<
 
 clean:

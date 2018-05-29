@@ -22,8 +22,8 @@
 
 // # define WIDTH 		1200
 // # define HEIGHT		800
-# define WIDTH 		360
-# define HEIGHT		360
+# define WIDTH 		600
+# define HEIGHT		400
 
 typedef struct		s_env 
 {
