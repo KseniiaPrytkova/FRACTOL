@@ -25,7 +25,7 @@
 # define 	WIDTH 		1200
 # define 	HEIGHT		800
 # define 	MAX 		100
-
+# define	MANDELBROT 	"mandelbrot_set"
 
 
 typedef struct		s_env 

@@ -39,16 +39,15 @@ void		foreach_pixel(t_env *e)
 	}
 
 }
+
 int			main(int argc, char *argv[])
 {
-	if (argc == 2)
+	if (argc == 2 && (ft_strcmp(argv[1], MANDELBROT) == 0))
 	{
-		char 	*s;
 		t_env 	*e;
 
-		s = argv[1];
 		if (!(e = malloc(sizeof(t_env))))
-			return (0);
+		return (0);
 		e->mlx_ptr = mlx_init();
 		e->win_ptr = mlx_new_window(e->mlx_ptr, WIDTH, HEIGHT, "hello, fractol");
 
@@ -61,8 +60,12 @@ int			main(int argc, char *argv[])
 		/* --------------------------- */
 		mlx_loop(e->mlx_ptr);
 	}
-	else 
-		ft_putstr("list of available parameters:\n");
+	else
+	{
+		ft_putstr("List of available parameters:\n");
+		ft_putstr("1. " MANDELBROT"\n");
+	}
+		
 	
 	return (0);
 }
