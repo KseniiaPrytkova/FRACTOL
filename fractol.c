@@ -53,11 +53,15 @@ int			main(int argc, char *argv[])
 
 		/*mlx_pixel_put(e->mlx_ptr, e->win_ptr, 50, 40, 8388352);*/
 
-		mlx_key_hook(e->win_ptr, key_draw, e);
-		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
+		
+		
 		/* --------------------------- */
+		e->is_first_time = 0;
 		foreach_pixel(e);
 		/* --------------------------- */
+		// mlx_key_hook(e->win_ptr, key_draw, e);
+		mlx_hook(e->win_ptr, 2, 5, key_draw, e);
+		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
 		mlx_loop(e->mlx_ptr);
 	}
 	else

@@ -12,10 +12,40 @@
 
 #include "./includes/fractol.h"
 
-int			key_draw(int keycode)
+void 		next_draw(t_env *e)
+{
+	mlx_clear_window(e->mlx_ptr, e->win_ptr);
+	foreach_pixel(e);
+}
+
+int			key_draw(int keycode, t_env *e)
 {
 	if (keycode == 53)
 		exit(1);
+	if (keycode == 126) /* up */
+	{
+		e->min_2_im += 0.01;
+		e->max_2_im += 0.01;
+		next_draw(e);
+	}
+	if (keycode == 125) /* down */
+	{
+		e->min_2_im -= 0.01;
+		e->max_2_im -= 0.01;
+		next_draw(e);
+	}
+	if (keycode == 123) /* left */
+	{
+		e->min_2_re += 0.01;
+		e->max_2_re += 0.01;
+		next_draw(e);
+	}
+	if (keycode == 124) /* right */
+	{
+		e->min_2_re -= 0.01;
+		e->max_2_re -= 0.01;
+		next_draw(e);
+	}
 	return (-1);
 }
 

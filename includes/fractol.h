@@ -36,12 +36,17 @@ typedef struct		s_env
 	double			max_2_re;
 	double			min_2_im;
 	double			max_2_im;
+	int				pix_r;
+	int				pix_g;
+	int				pix_b;
+	int 			is_first_time;
 
 
 }					t_env;
 
 int			mandelbrot_math(t_env *e, int x, int y);
 double		ft_map(double variable_1, double min_1, double max_1, double min_2, double max_2);
-int			key_draw(int keycode);
+int			key_draw(int keycode, t_env *e);
+void		foreach_pixel(t_env *e);
 
 #endif
