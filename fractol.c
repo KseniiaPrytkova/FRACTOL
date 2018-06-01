@@ -18,6 +18,32 @@ static int	exit_x(void)
 	return (0);
 }
 
+void	init(t_env *e)
+{
+	e->choose_color = 0;
+	e->min_x = -1.5;
+	e->max_x = 1;
+	e->min_y = -1;
+	e->max_y = 1;
+}
+
+void		choose_color(t_env *e, int color)
+{
+	if (e->choose_color == 0)
+	{
+			e->red = (color * 5) % 30;
+			e->blue = (color * 5) % 255;
+			e->green = (color * 5) % 30;
+	}
+	if (e->choose_color == 1)
+	{
+		e->red = 255;
+	}
+	if (e->choose_color == 2)
+	{
+		e->red = 255;
+	}
+}
 
 void		foreach_pixel(t_env *e)
 {
@@ -32,7 +58,11 @@ void		foreach_pixel(t_env *e)
 		while (x < WIDTH)
 		{
 			color = mandelbrot_math(e, x, y);
-			mlx_pixel_put(e->mlx_ptr, e->win_ptr, x, y, color);
+			//color = julia_math(e, x, y);
+			//color = ship_math(e, x, y);
+			choose_color(e, color);
+			// TODO fill px
+			put_pixel_to_img(e, x, y);
 			x++;
 		}
 		y++;
@@ -47,21 +77,17 @@ int			main(int argc, char *argv[])
 		t_env 	*e;
 
 		if (!(e = malloc(sizeof(t_env))))
-		return (0);
-		e->mlx_ptr = mlx_init();
-		e->win_ptr = mlx_new_window(e->mlx_ptr, WIDTH, HEIGHT, "hello, fractol");
-
-		/*mlx_pixel_put(e->mlx_ptr, e->win_ptr, 50, 40, 8388352);*/
-
-		
-		
-		/* --------------------------- */
-		e->is_first_time = 0;
+			return (0);
+		if (init_mlx(e) == 0)
+			return (0);
+		init(e);
 		foreach_pixel(e);
-		/* --------------------------- */
-		// mlx_key_hook(e->win_ptr, key_draw, e);
+		next_draw(e);
+	
 		mlx_hook(e->win_ptr, 2, 5, key_draw, e);
 		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
+		mlx_mouse_hook(e->win_ptr, mouse_draw, e);
+		//mlx_hook(e->win, MOTION_NOTIFY, MOTION_MASK, ftl_motion_hook, e);
 		mlx_loop(e->mlx_ptr);
 	}
 	else

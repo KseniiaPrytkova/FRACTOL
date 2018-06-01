@@ -12,34 +12,22 @@
 
 #include "./includes/fractol.h"
 
-static void	mandelbrot_init(t_env *e)
-{
-	e->min_2_re = -1.5;
-	e->max_2_re = 1;
-	e->min_2_im = -1;
-	e->max_2_im = 1;
-}
 
 int			mandelbrot_math(t_env *e, int x, int y)
 {
-	long double mx; // X FOR FORMULA
-	long double my; // Y FOR FORMULA
-	long double c_im;
-	long double c_re;
-	long double x_temp;
+	double mx; // X FOR FORMULA
+	double my; // Y FOR FORMULA
+	double c_im;
+	double c_re;
+	double x_temp;
 	int			iteration;
 
 
 	iteration = 0;
 	mx = 0;
 	my = 0;
-	if (e->is_first_time == 0)
-	{
-		mandelbrot_init(e);
-		e->is_first_time = 1;
-	}
-	c_re = ft_map(x, 0, WIDTH, e->min_2_re, e->max_2_re);
-	c_im = ft_map(y, 0, HEIGHT, e->min_2_im, e->max_2_im);
+	c_re = ft_map(x, 0, WIDTH, e->min_x, e->max_x);
+	c_im = ft_map(y, 0, HEIGHT, e->min_y, e->max_y);
 	while (iteration < MAX)
 	{
 		x_temp = (mx * mx - my * my) + c_re;

@@ -16,7 +16,7 @@ CC = gcc
 
 FLAG = -Wall -Werror -Wextra
 
-SRC = fractol.c common_staff.c mandelbrot_logics.c
+SRC = fractol.c common_staff.c mandelbrot_logics.c other.c mlx.c
 
 INCLUDE = ./includes
 
