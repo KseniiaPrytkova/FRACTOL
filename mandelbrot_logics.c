@@ -22,7 +22,6 @@ int			mandelbrot_math(t_env *e, int x, int y)
 	double x_temp;
 	int			iteration;
 
-
 	iteration = 0;
 	mx = 0;
 	my = 0;

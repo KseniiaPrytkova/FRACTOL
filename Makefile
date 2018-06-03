@@ -14,7 +14,7 @@ NAME = fractol
 
 CC = gcc
 
-FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra -O3
 
 SRC = fractol.c common_staff.c mandelbrot_logics.c other.c mlx.c
 

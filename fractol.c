@@ -25,6 +25,9 @@ void	init(t_env *e)
 	e->max_x = 1;
 	e->min_y = -1;
 	e->max_y = 1;
+	e->move_x = 0;
+	e->move_y = 0;
+	e->zoom = 1;
 }
 
 void		choose_color(t_env *e, int color)
