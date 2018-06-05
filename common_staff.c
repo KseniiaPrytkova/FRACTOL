@@ -21,14 +21,16 @@ void 		next_draw(t_env *e)
 
 int			mouse_draw(int keycode, int x, int y, t_env *e)
 {
-	float	zoom_factor;
-	float	move_x;
-	float	move_y;
+	long double	zoom_factor;
+	long double	move_x;
+	long double	move_y;
+
 	if (keycode == 5 || keycode == 1)
 	{
-		move_x  = x * ((e->max_x - e->min_x) / WIDTH) + e->min_x;
-		move_y  = y * ((e->max_y - e->min_y) / HEIGHT) + e->min_y;
-		zoom_factor = 0.9;
+		move_x  = (long double)x * (long double)((e->max_x - e->min_x) / (long double)WIDTH) + (long double)e->min_x;
+		move_y  = (long double)y * (long double)((e->max_y - e->min_y) / (long double)HEIGHT) + (long double)e->min_y;
+		zoom_factor = 0.9f;
+		e->zoom *= zoom_factor;
 		e->max_x = e->max_x * zoom_factor + move_x * (1 - zoom_factor);
 		e->min_x = e->min_x * zoom_factor + move_x * (1 - zoom_factor);
 		e->max_y = e->max_y * zoom_factor + move_y * (1 - zoom_factor);
@@ -37,13 +39,31 @@ int			mouse_draw(int keycode, int x, int y, t_env *e)
 	}
 	if (keycode == 4 || keycode == 2)
 	{
-		move_x  = x * ((e->max_x - e->min_x) / WIDTH) + e->min_x;
-		move_y  = y * ((e->max_y - e->min_y) / HEIGHT) + e->min_y;
-		zoom_factor = 1.1;
+		move_x  = (long double)x * (long double)((e->max_x - e->min_x) / (long double)WIDTH) + e->min_x;
+		move_y  = (long double)y * ((long double)(e->max_y - e->min_y) / (long double)HEIGHT) + e->min_y;
+		zoom_factor = 1.1f;
+		e->zoom *= zoom_factor;
 		e->max_x = e->max_x * zoom_factor + move_x * (1 - zoom_factor);
 		e->min_x = e->min_x * zoom_factor + move_x * (1 - zoom_factor);
 		e->max_y = e->max_y * zoom_factor + move_y * (1 - zoom_factor);
 		e->min_y = e->min_y * zoom_factor + move_y * (1 - zoom_factor);
+		next_draw(e);
+	}
+	return (0);
+}
+
+int 		j_mouse( int x, int y, t_env *e)
+{
+	long double new_x;
+	long double new_y;
+
+	if (e->julia_mode_on == 1)
+	{
+		new_x = ft_map(x, 0, WIDTH, -1, 1);
+		new_y = ft_map(y, 0, HEIGHT, -1, 1);
+
+		e->c_re = new_x;
+		e->c_im = new_y;
 		next_draw(e);
 	}
 	return (0);
@@ -80,12 +100,16 @@ int			key_draw(int keycode, t_env *e)
 		e->max_x -= 0.1 / e->zoom;
 		next_draw(e);
 	}
+	if (keycode == 49)
+	{
+		e->julia_mode_on = (e->julia_mode_on + 1) % 2;
+	}
 	return (-1);
 }
 
-float		ft_map(float variable_1, float min_1, float max_1, float min_2, float max_2)
+long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2)
 {
-	float variable_2;
+	long double variable_2;
 
 	variable_2 = min_2 + (max_2 - min_2) * ((variable_1 - min_1) / (max_1 - min_1));
 	return (variable_2);

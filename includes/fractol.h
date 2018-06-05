@@ -24,7 +24,6 @@
 // # define HEIGHT		800
 # define 	WIDTH 		600
 # define 	HEIGHT		400
-# define 	MAX 		1000
 
 # define MOTION_MASK (1L<<6)
 # define MOTION_NOTIFY	6
@@ -36,10 +35,12 @@
 # define KEY_MOUSE_LEFT 7
 # define KEY_MOUSE_RIGHT 6
 
-# define	MANDELBROT 	"mandelbrot_set"
+# define	MANDELBROT 	"1"
+# define	JULIA 		"2"
 
 typedef struct		s_env 
 {
+	int	(*function)(struct s_env *e, int x, int y);
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*image_ptr;
@@ -47,34 +48,40 @@ typedef struct		s_env
 	int				bpp;
 	int				en;
 	int				ln;
-	double			min_x;
-	double			max_x;
-	double			min_y;
-	double			max_y;
+	float			infinity;
+	long double			c_re;
+	long double			c_im;
+	long double			min_x;
+	long double			max_x;
+	long double			min_y;
+	long double			max_y;
 	int				red;
 	int				green;
 	int				blue;
 	int				choose_color;
+	int				choose_fractal;
+	int				julia_mode_on;
+	long double 			center_x;
+	long double			center_y;
 
-	double 			center_x;
-	double			center_y;
-
-	float	zoom;
-	double	move_x;
-	double move_y;
-	double			start_y;
-	double			end_y;
+	long double			zoom;
+	long double			move_x;
+	long double 			move_y;
+	long double			start_y;
+	long double			end_y;
 
 }					t_env;
 
 int			mandelbrot_math(t_env *e, int x, int y);
+int			julia_math(t_env *e, int x, int y);
 
-float		ft_map(float variable_1, float min_1, float max_1, float min_2, float max_2);
+long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2);
 int			key_draw(int keycode, t_env *e);
 void		foreach_pixel(t_env *e);
 void  		put_pixel_to_img(t_env *e, int x, int y);
 int			init_mlx(t_env *e);
 void 		next_draw(t_env *e);
 int			mouse_draw(int keycode, int x, int y, t_env *e);
+int 		j_mouse(int x, int y, t_env *e);
 
 #endif
