@@ -90,7 +90,7 @@ int			main(int argc, char *argv[])
 		mlx_hook(e->win_ptr, 2, 5, key_draw, e);
 		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
 		mlx_mouse_hook(e->win_ptr, mouse_draw, e);
-		//mlx_hook(e->win, MOTION_NOTIFY, MOTION_MASK, ftl_motion_hook, e);
+		//mlx_hook(e->win, MOTION_NOTIFY, MOTION_MASK, wheel_draw, e);
 		mlx_loop(e->mlx_ptr);
 	}
 	else
