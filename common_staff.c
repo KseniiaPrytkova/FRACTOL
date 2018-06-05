@@ -104,6 +104,16 @@ int			key_draw(int keycode, t_env *e)
 	{
 		e->julia_mode_on = (e->julia_mode_on + 1) % 2;
 	}
+	if (keycode == 13)
+	{
+		e->infinity += 10;
+		next_draw(e);
+	}
+	if (keycode == 14)
+	{
+		e->infinity -= 10;
+		next_draw(e);
+	}
 	return (-1);
 }
 

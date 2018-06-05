@@ -30,7 +30,7 @@ void	init(t_env *e)
 	e->move_x = 0.0f;
 	e->move_y = 0.0f;
 	e->zoom = 1.0f;
-	e->infinity = 350;
+	e->infinity = 100;
 	if (e->choose_fractal == 1)
 	{
 		e->function = julia_math;
@@ -99,7 +99,7 @@ int			main(int argc, char *argv[])
 			return (0);
 		if (init_mlx(e) == 0)
 			return (0);
-		e->choose_fractal = 0; // ACHTUNG! SLANDEN SIE WIR MEINE LIEBER 
+		e->choose_fractal = 1; // ACHTUNG! SLANDEN SIE WIR MEINE LIEBER 
 		init(e);
 		foreach_pixel(e);
 		next_draw(e);
