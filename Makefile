@@ -16,7 +16,7 @@ CC = gcc
 
 FLAG = -Wall -Werror -Wextra -O3
 
-SRC = fractol.c common_staff.c fractals_math.c mlx_staff.c keyboard_events.c mouse_events.c
+SRC = fractol.c fractals_math.c mlx_manager.c draw_manager.c color_manager.c keyboard_events.c mouse_events.c 
 
 INCLUDE = ./includes
 

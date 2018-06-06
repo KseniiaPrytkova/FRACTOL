@@ -72,15 +72,18 @@ typedef struct		s_env
 
 }					t_env;
 
+void	init(t_env *e);
+long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2);
 int			mandelbrot_math(t_env *e, int x, int y);
 int			julia_math(t_env *e, int x, int y);
 
-long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2);
+
 int			key_draw(int keycode, t_env *e);
 void		foreach_pixel(t_env *e);
 void  		put_pixel_to_img(t_env *e, int x, int y);
 int			init_mlx(t_env *e);
 void 		next_draw(t_env *e);
+void		choose_color(t_env *e, int color);
 int			mouse_zoom(int keycode, int x, int y, t_env *e);
 int 		mouse_for_julia(int x, int y, t_env *e);
 

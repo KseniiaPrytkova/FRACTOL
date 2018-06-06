@@ -37,9 +37,3 @@ int		init_mlx(t_env *e)
 	return (1);
 }
 
-void	next_draw(t_env *e)
-{
-	mlx_clear_window(e->mlx_ptr, e->win_ptr);
-	foreach_pixel(e);
-	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->image_ptr, 0, 0);
-}

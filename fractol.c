@@ -18,76 +18,16 @@ static int	exit_x(void)
 	return (0);
 }
 
-void	init(t_env *e)
+long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2)
 {
-	e->function = mandelbrot_math;
-	e->choose_color = 0;
-	e->julia_mode_on = 0;
-	e->min_x = -1.5f;
-	e->max_x = 1.0f;
-	e->min_y = -1.0f;
-	e->max_y = 1.0f;
-	e->move_x = 0.0f;
-	e->move_y = 0.0f;
-	e->zoom = 1.0f;
-	e->infinity = 100;
-	if (e->choose_fractal == 1)
-	{
-		e->function = julia_math;
-		e->c_re = 0.016f;
-		e->c_im = 0.84f;
-	}
+	long double variable_2;
+
+	variable_2 = min_2 + (max_2 - min_2) * ((variable_1 - min_1) / (max_1 - min_1));
+	return (variable_2);
 }
 
-void		choose_color(t_env *e, int color)
-{
-	if (e->choose_color == 0)
-	{
-		if (color == e->infinity )
-		{
-			e->red = 0;
-			e->blue = 0;
-			e->green = 0;
-		}
-		else
-		{
-			e->red = (color * 3) % 255;
-			e->blue = (color * 7) % 255;
-			e->green = (color * 4) % 255;
-		}
-		
-	}
-	if (e->choose_color == 1)
-	{
-		e->red = 255;
-	}
-	if (e->choose_color == 2)
-	{
-		e->red = 255;
-	}
-}
 
-void		foreach_pixel(t_env *e)
-{
-	int x;
-	int y;
-	int color;
 
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			color = e->function(e, x, y);
-			choose_color(e, color);
-			put_pixel_to_img(e, x, y);
-			x++;
-		}
-		y++;
-	}
-
-}
 
 int			main(int argc, char *argv[])
 {
