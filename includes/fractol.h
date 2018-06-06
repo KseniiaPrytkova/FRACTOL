@@ -35,8 +35,8 @@
 # define KEY_MOUSE_LEFT 7
 # define KEY_MOUSE_RIGHT 6
 
-# define	MANDELBROT 	"1"
-# define	JULIA 		"2"
+# define	MANDELBROT 	"mandelbrot_set"
+# define	JULIA 		"julia_set"
 
 typedef struct		s_env 
 {

@@ -18,7 +18,17 @@ static int	exit_x(void)
 	return (0);
 }
 
-long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2)
+static int 	arguments_handler(char *str)
+{
+	if (ft_strcmp(str, MANDELBROT) == 0)
+		return (1);
+	else if (ft_strcmp(str, JULIA) == 0)
+		return (2);
+	else
+		return (0);
+}
+
+long double	ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2)
 {
 	long double variable_2;
 
@@ -26,12 +36,13 @@ long double		ft_map(long double variable_1, long double min_1, long double max_1
 	return (variable_2);
 }
 
+		
 
 
 
 int			main(int argc, char *argv[])
 {
-	if (argc == 2 && (ft_strcmp(argv[1], JULIA) == 0))
+	if (argc == 2 && (arguments_handler(argv[1]) != 0))
 	{
 		t_env 	*e;
 
@@ -39,7 +50,9 @@ int			main(int argc, char *argv[])
 			return (0);
 		if (init_mlx(e) == 0)
 			return (0);
-		e->choose_fractal = 0;
+
+		e->choose_fractal = arguments_handler(argv[1]);
+		printf("%d\n", e->choose_fractal );
 		init(e);
 		foreach_pixel(e);
 		next_draw(e);
@@ -53,7 +66,8 @@ int			main(int argc, char *argv[])
 	else
 	{
 		ft_putstr("List of available parameters:\n");
-		ft_putstr("1. " MANDELBROT"\n");
+		ft_putstr("1: "MANDELBROT"\n");
+		ft_putstr("2: "JULIA"\n");
 	}
 		
 	

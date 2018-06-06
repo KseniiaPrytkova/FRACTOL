@@ -25,11 +25,16 @@ void	init(t_env *e)
 	e->move_y = 0.0f;
 	e->zoom = 1.0f;
 	e->infinity = 100;
-	if (e->choose_fractal == 1)
+	if(e->choose_fractal == 1)
+	{
+		e->function = mandelbrot_math;
+	}
+	else if(e->choose_fractal == 2)
 	{
 		e->function = julia_math;
 		e->c_re = 0.016f;
 		e->c_im = 0.84f;
+
 	}
 }
 
