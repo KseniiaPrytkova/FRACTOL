@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx.c                                              :+:      :+:    :+:   */
+/*   mlx_staff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kprytkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/01 16:14:59 by kprytkov          #+#    #+#             */
-/*   Updated: 2018/06/01 16:14:59 by kprytkov         ###   ########.fr       */
+/*   Created: 2018/06/06 16:41:22 by kprytkov          #+#    #+#             */
+/*   Updated: 2018/06/06 16:41:23 by kprytkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractol.h"
+
+void	put_pixel_to_img(t_env *e, int x, int y)
+{
+ 	if ((x >= 0 || x <= WIDTH) && (y >= 0 || y <= HEIGHT))
+ 	{
+		e->image[(x * 4) + (y * WIDTH * 4) + 2] = e->red;
+		e->image[(x * 4) + (y * WIDTH * 4) + 1] = e->green;
+		e->image[(x * 4) + (y * WIDTH * 4)] = e->blue;
+ 	}
+}
 
 int		init_mlx(t_env *e)
 {
@@ -25,4 +35,11 @@ int		init_mlx(t_env *e)
  		return (0);
  	e->bpp /= 8;
 	return (1);
+}
+
+void	next_draw(t_env *e)
+{
+	mlx_clear_window(e->mlx_ptr, e->win_ptr);
+	foreach_pixel(e);
+	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->image_ptr, 0, 0);
 }

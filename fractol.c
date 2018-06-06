@@ -99,15 +99,15 @@ int			main(int argc, char *argv[])
 			return (0);
 		if (init_mlx(e) == 0)
 			return (0);
-		e->choose_fractal = 1; // ACHTUNG! SLANDEN SIE WIR MEINE LIEBER 
+		e->choose_fractal = 0;
 		init(e);
 		foreach_pixel(e);
 		next_draw(e);
 	
 		mlx_hook(e->win_ptr, 2, 5, key_draw, e);
 		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
-		mlx_mouse_hook(e->win_ptr, mouse_draw, e);
-		mlx_hook(e->win_ptr, MOTION_NOTIFY, MOTION_MASK, j_mouse, e);
+		mlx_mouse_hook(e->win_ptr, mouse_zoom, e);
+		mlx_hook(e->win_ptr, MOTION_NOTIFY, MOTION_MASK, mouse_for_julia, e);
 		mlx_loop(e->mlx_ptr);
 	}
 	else

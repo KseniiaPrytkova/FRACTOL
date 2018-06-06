@@ -81,7 +81,7 @@ void		foreach_pixel(t_env *e);
 void  		put_pixel_to_img(t_env *e, int x, int y);
 int			init_mlx(t_env *e);
 void 		next_draw(t_env *e);
-int			mouse_draw(int keycode, int x, int y, t_env *e);
-int 		j_mouse(int x, int y, t_env *e);
+int			mouse_zoom(int keycode, int x, int y, t_env *e);
+int 		mouse_for_julia(int x, int y, t_env *e);
 
 #endif
