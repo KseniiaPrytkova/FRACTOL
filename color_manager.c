@@ -12,11 +12,11 @@
 
 #include "./includes/fractol.h"
 
-void		choose_color(t_env *e, int color)
+void		choose_color(t_env *e, int depth)
 {
 	if (e->choose_color == 0)
 	{
-		if (color == e->infinity )
+		if (depth == e->infinity )
 		{
 			e->red = 0;
 			e->blue = 0;
@@ -24,18 +24,22 @@ void		choose_color(t_env *e, int color)
 		}
 		else
 		{
-			e->red = (color * 3) % 255;
-			e->blue = (color * 7) % 255;
-			e->green = (color * 4) % 255;
+			e->red = (depth * 3) % 255;
+			e->blue = (depth * 7) % 255;
+			e->green = (depth * 4) % 255;
 		}
 		
 	}
-	if (e->choose_color == 1)
+	else if (e->choose_color == 1)
 	{
-		e->red = 255;
+		e->red = (depth * 7) % 255;
+		e->blue = (depth * 2) % 70;
+		e->green = (depth * 3) % 4;
 	}
-	if (e->choose_color == 2)
+	else if (e->choose_color == 2)
 	{
-		e->red = 255;
+		e->red = (depth * 30) % 255;
+		e->blue = (depth * 80) % 255;
+		e->green = (depth * 40) % 255;
 	}
 }

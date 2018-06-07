@@ -36,6 +36,24 @@ long double	ft_map(long double variable_1, long double min_1, long double max_1,
 	return (variable_2);
 }
 
+static void	tips(t_env *e)
+{
+	if (e->choose_fractal == 1)
+	{
+		ft_putstr("MANDELBROT'S LEGEND:\n");
+		ft_putstr("MOVE: up || down || left || right\n");
+		ft_putstr("ZOOM: mouse wheel || mouse click (left + && right -)\n");
+		ft_putstr("CHANGE THE COLOR DEPTH: W || E\n");
+	}
+	else if (e->choose_fractal == 2)
+	{
+		ft_putstr("JULIA'S LEGEND:\n");
+		ft_putstr("MOVE: up || down || left || right\n");
+		ft_putstr("MOVING MODE ON/OFF: space\n");
+		ft_putstr("MOVE JULIA: mouse click || mouse cursor\n");
+	}
+	
+}
 		
 
 
@@ -52,7 +70,8 @@ int			main(int argc, char *argv[])
 			return (0);
 
 		e->choose_fractal = arguments_handler(argv[1]);
-		printf("%d\n", e->choose_fractal );
+		tips(e);
+		
 		init(e);
 		foreach_pixel(e);
 		next_draw(e);

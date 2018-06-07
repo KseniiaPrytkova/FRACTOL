@@ -12,7 +12,7 @@
 
 #include "./includes/fractol.h"
 
-void	init(t_env *e)
+void		init(t_env *e)
 {
 	e->function = mandelbrot_math;
 	e->choose_color = 0;

@@ -18,12 +18,12 @@
 # include <math.h>
 # include "../libft/libft.h"
 
-# include <stdio.h> /* for printf */
+# include <stdio.h> /* for printf and perror()*/
 
 // # define WIDTH 		1200
 // # define HEIGHT		800
-# define 	WIDTH 		600
-# define 	HEIGHT		400
+# define 	WIDTH 		800
+# define 	HEIGHT		600
 
 # define MOTION_MASK (1L<<6)
 # define MOTION_NOTIFY	6
