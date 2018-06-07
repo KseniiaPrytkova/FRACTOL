@@ -24,6 +24,8 @@ static int 	arguments_handler(char *str)
 		return (1);
 	else if (ft_strcmp(str, JULIA) == 0)
 		return (2);
+	else if (ft_strcmp(str, BURNING_SHIP) == 0)
+		return (3);
 	else
 		return (0);
 }

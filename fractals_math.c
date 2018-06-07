@@ -23,12 +23,12 @@ int			mandelbrot_math(t_env *e, int x, int y)
 	int	iteration;
 
 	iteration = 0;
-	mx = 0;
-	my = 0;
+	mx = 0.0;
+	my = 0.0;
 	c_re = ft_map(x, 0, WIDTH, e->min_x, e->max_x);
 	c_im = ft_map(y, 0, HEIGHT, e->min_y, e->max_y);
 	while (iteration < e->infinity)
-	{
+	{ 
 		x_temp = (mx * mx - my * my) + c_re;
 		my = 2.0f * mx * my + c_im;
 		mx = x_temp;
@@ -62,3 +62,35 @@ int			julia_math(t_env *e, int x, int y)
 	}
 	return (iteration);
 }
+
+int burning_ship_math(t_env *e, int x, int y)
+{
+	long double mx; // X FOR FORMULA
+	long double my; // Y FOR FORMULA
+	long double c_im;
+	long double c_re;
+	long double x_temp;
+	int	iteration;
+
+	iteration = 0;
+	mx = 0.0;
+	my = 0.0;
+	c_re = ft_map(x, 0, WIDTH, e->min_x, e->max_x);
+	c_im = ft_map(y, 0, HEIGHT, e->min_y, e->max_y);
+	while (iteration < e->infinity)
+	{ 
+		x_temp = (mx * mx - my * my) + c_re;
+		my = fabsl(2.0 * mx * my + c_im);
+		mx = fabsl(x_temp);
+		if ((mx * mx + my * my) > 4.0f)
+			break;
+		iteration ++;
+	}
+	return (iteration);
+}
+
+/*int barnsley_fern_math(t_env *e, int x, int y)
+{
+	
+	return (iteration);
+}*/

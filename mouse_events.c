@@ -20,8 +20,7 @@ int			mouse_zoom(int keycode, int x, int y, t_env *e)
 
 	if (keycode == 5 || keycode == 1)
 	{
-		if (e->zoom >= 0.00000001f)
-		{
+	
 			move_x  = (long double)x * (long double)((e->max_x - e->min_x) / (long double)WIDTH) + (long double)e->min_x;
 			move_y  = (long double)y * (long double)((e->max_y - e->min_y) / (long double)HEIGHT) + (long double)e->min_y;
 			zoom_factor = 0.9f;
@@ -31,7 +30,6 @@ int			mouse_zoom(int keycode, int x, int y, t_env *e)
 			e->max_y = e->max_y * zoom_factor + move_y * (1 - zoom_factor);
 			e->min_y = e->min_y * zoom_factor + move_y * (1 - zoom_factor);
 			next_draw(e);
-		}
 	}
 	if (keycode == 4 || keycode == 2)
 	{

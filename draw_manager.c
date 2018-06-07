@@ -32,10 +32,16 @@ void		init(t_env *e)
 	else if(e->choose_fractal == 2)
 	{
 		e->function = julia_math;
-		e->c_re = 0.016f;
-		e->c_im = 0.84f;
+		e->c_re = -0.70176f;
+		e->c_im = -0.3842f;
 
 	}
+	else if(e->choose_fractal == 3)
+	{
+			e->function = burning_ship_math;
+
+	}
+
 }
 
 void		foreach_pixel(t_env *e)

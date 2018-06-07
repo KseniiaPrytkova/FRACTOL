@@ -34,9 +34,10 @@
 # define KEY_MOUSE_DOWN 4
 # define KEY_MOUSE_LEFT 7
 # define KEY_MOUSE_RIGHT 6
-
+# define SQR(x) (x * x)
 # define	MANDELBROT 	"mandelbrot_set"
 # define	JULIA 		"julia_set"
+# define 	BURNING_SHIP "burning_ship"
 
 typedef struct		s_env 
 {
@@ -76,6 +77,7 @@ void	init(t_env *e);
 long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2);
 int			mandelbrot_math(t_env *e, int x, int y);
 int			julia_math(t_env *e, int x, int y);
+int burning_ship_math(t_env *e, int x, int y);
 
 
 int			key_draw(int keycode, t_env *e);

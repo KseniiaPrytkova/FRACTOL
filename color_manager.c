@@ -38,8 +38,8 @@ void		choose_color(t_env *e, int depth)
 	}
 	else if (e->choose_color == 2)
 	{
-		e->red = (depth * 30) % 255;
-		e->blue = (depth * 80) % 255;
+		e->red = (SQR(depth) * 30) % 255;
+		e->blue = (SQR(depth) * 80) % 255;
 		e->green = (depth * 40) % 255;
 	}
 }
