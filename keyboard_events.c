@@ -63,7 +63,7 @@ int			key_draw(int keycode, t_env *e)
 		e->max_x -= 0.1 * e->zoom;
 		next_draw(e);
 	}
-	if (keycode == 49) /* space */
+	if (keycode == 256) /* ctrl */
 	{
 		e->julia_mode_on = (e->julia_mode_on + 1) % 2;
 	}
@@ -75,6 +75,11 @@ int			key_draw(int keycode, t_env *e)
 	if (keycode == 14) /* E */
 	{
 		e->infinity -= 10;
+		next_draw(e);
+	}
+	if (keycode == 49) /* space */
+	{
+		init(e);
 		next_draw(e);
 	}
 	guess_color(keycode, e);

@@ -65,8 +65,8 @@ int			julia_math(t_env *e, int x, int y)
 
 int burning_ship_math(t_env *e, int x, int y)
 {
-	long double mx; // X FOR FORMULA
-	long double my; // Y FOR FORMULA
+	long double mx;
+	long double my;
 	long double c_im;
 	long double c_re;
 	long double x_temp;
@@ -108,8 +108,8 @@ int sierpinski_carpet(t_env *e, int x, int y)
 
 int			douady_rabbit(t_env *e, int x, int y)
 {
-	long double mx; // X FOR FORMULA
-	long double my; // Y FOR FORMULA
+	long double mx;
+	long double my;
 
 	long double x_temp;
 	int	iteration;
