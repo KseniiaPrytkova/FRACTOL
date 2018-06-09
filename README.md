@@ -2,9 +2,9 @@
 This project is meant to create graphically beautiful fractals.
 
 ### Burning Ship fractal:
-![alternativetext](screenshots/burnin_ship_1.png)
+![alternativetext](screenshots/burning_ship_1.png)
 ### Burning Ship fractal #2:
-![alternativetext](screenshots/burnin_ship_3.png)
+![alternativetext](screenshots/burning_ship_3.png)
 ### Mandelbrot set:
 ![alternativetext](screenshots/mandelbrot_1.png)
 ### Julia set:
