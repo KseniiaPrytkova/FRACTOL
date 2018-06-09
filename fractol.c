@@ -12,8 +12,9 @@
 
 #include "./includes/fractol.h"
 
-static int	exit_x(void)
+static int	exit_x(t_env *e)
 {
+	free(e);
 	exit(1);
 	return (0);
 }
@@ -26,6 +27,10 @@ static int 	arguments_handler(char *str)
 		return (2);
 	else if (ft_strcmp(str, BURNING_SHIP) == 0)
 		return (3);
+	else if (ft_strcmp(str, SIERPINSKI_CARPET) == 0)
+		return (4);
+		else if (ft_strcmp(str, DOUADY_RABBIT) == 0)
+		return (5);
 	else
 		return (0);
 }
@@ -79,7 +84,7 @@ int			main(int argc, char *argv[])
 		next_draw(e);
 	
 		mlx_hook(e->win_ptr, 2, 5, key_draw, e);
-		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
+		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, e);
 		mlx_mouse_hook(e->win_ptr, mouse_zoom, e);
 		mlx_hook(e->win_ptr, MOTION_NOTIFY, MOTION_MASK, mouse_for_julia, e);
 		mlx_loop(e->mlx_ptr);
@@ -90,7 +95,6 @@ int			main(int argc, char *argv[])
 		ft_putstr("1: "MANDELBROT"\n");
 		ft_putstr("2: "JULIA"\n");
 	}
-		
-	
+
 	return (0);
 }

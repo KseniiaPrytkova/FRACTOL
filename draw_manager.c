@@ -35,13 +35,14 @@ void		init(t_env *e)
 		e->c_re = -0.70176f;
 		e->c_im = -0.3842f;
 
+
 	}
 	else if(e->choose_fractal == 3)
-	{
-			e->function = burning_ship_math;
-
-	}
-
+		e->function = burning_ship_math;
+	else if(e->choose_fractal == 4)
+		e->function = sierpinski_carpet;
+	else if(e->choose_fractal == 5)
+		e->function = douady_rabbit;
 }
 
 void		foreach_pixel(t_env *e)

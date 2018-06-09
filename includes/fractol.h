@@ -38,6 +38,9 @@
 # define	MANDELBROT 	"mandelbrot_set"
 # define	JULIA 		"julia_set"
 # define 	BURNING_SHIP "burning_ship"
+# define 	SIERPINSKI_CARPET "sierpinski_carpet"
+# define 	DOUADY_RABBIT "douady_rabbit"
+
 
 typedef struct		s_env 
 {
@@ -71,6 +74,7 @@ typedef struct		s_env
 	long double			start_y;
 	long double			end_y;
 
+
 }					t_env;
 
 void	init(t_env *e);
@@ -78,6 +82,8 @@ long double		ft_map(long double variable_1, long double min_1, long double max_1
 int			mandelbrot_math(t_env *e, int x, int y);
 int			julia_math(t_env *e, int x, int y);
 int burning_ship_math(t_env *e, int x, int y);
+int sierpinski_carpet(t_env *e, int x, int y);
+int			douady_rabbit(t_env *e, int x, int y);
 
 
 int			key_draw(int keycode, t_env *e);

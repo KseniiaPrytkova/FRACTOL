@@ -34,7 +34,11 @@ static void		guess_color(int keycode, t_env *e)
 int			key_draw(int keycode, t_env *e)
 {
 	if (keycode == 53)
+	{
+		free(e);
+		// system("leaks fractol");
 		exit(1);
+	}
 	if (keycode == 125) /* up */
 	{
 		e->min_y += 0.1 * e->zoom;
