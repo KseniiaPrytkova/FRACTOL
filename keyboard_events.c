@@ -35,8 +35,7 @@ int			key_draw(int keycode, t_env *e)
 {
 	if (keycode == 53)
 	{
-		free(e);
-		// system("leaks fractol");
+		system("leaks fractol");
 		exit(1);
 	}
 	if (keycode == 125) /* up */

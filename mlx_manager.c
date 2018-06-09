@@ -12,6 +12,14 @@
 
 #include "./includes/fractol.h"
 
+long double	ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2)
+{
+	long double variable_2;
+
+	variable_2 = min_2 + (max_2 - min_2) * ((variable_1 - min_1) / (max_1 - min_1));
+	return (variable_2);
+}
+
 void	put_pixel_to_img(t_env *e, int x, int y)
 {
  	if ((x >= 0 || x <= WIDTH) && (y >= 0 || y <= HEIGHT))

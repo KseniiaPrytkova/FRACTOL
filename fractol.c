@@ -12,9 +12,8 @@
 
 #include "./includes/fractol.h"
 
-static int	exit_x(t_env *e)
+static int	exit_x(void)
 {
-	free(e);
 	exit(1);
 	return (0);
 }
@@ -35,13 +34,16 @@ static int 	arguments_handler(char *str)
 		return (0);
 }
 
-long double	ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2)
+static void param_list(void)
 {
-	long double variable_2;
+	ft_putstr("List of available parameters:\n");
+	ft_putstr("1: "MANDELBROT"\n");
+	ft_putstr("2: "JULIA"\n");
+	ft_putstr("2: "BURNING_SHIP"\n");
+	ft_putstr("2: "SIERPINSKI_CARPET"\n");
+	ft_putstr("2: "DOUADY_RABBIT"\n");
 
-	variable_2 = min_2 + (max_2 - min_2) * ((variable_1 - min_1) / (max_1 - min_1));
-	return (variable_2);
-}
+}	
 
 static void	tips(t_env *e)
 {
@@ -75,26 +77,18 @@ int			main(int argc, char *argv[])
 			return (0);
 		if (init_mlx(e) == 0)
 			return (0);
-
 		e->choose_fractal = arguments_handler(argv[1]);
-		tips(e);
-		
+		tips(e);	
 		init(e);
 		foreach_pixel(e);
 		next_draw(e);
-	
 		mlx_hook(e->win_ptr, 2, 5, key_draw, e);
-		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, e);
+		mlx_hook(e->win_ptr, 17, 1L << 17, exit_x, NULL);
 		mlx_mouse_hook(e->win_ptr, mouse_zoom, e);
 		mlx_hook(e->win_ptr, MOTION_NOTIFY, MOTION_MASK, mouse_for_julia, e);
 		mlx_loop(e->mlx_ptr);
 	}
 	else
-	{
-		ft_putstr("List of available parameters:\n");
-		ft_putstr("1: "MANDELBROT"\n");
-		ft_putstr("2: "JULIA"\n");
-	}
-
+		param_list();
 	return (0);
 }
