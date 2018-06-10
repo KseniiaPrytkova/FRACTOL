@@ -42,6 +42,7 @@ int		julia_math(t_env *e, int x, int y)
 	long double mx;
 	long double my;
 	long double x_temp;
+
 	e->iteration = 0;
 	mx = ft_map(x, add_params(0, WIDTH, e->min_x, e->max_x));
 	my = ft_map(y, add_params(0, HEIGHT, e->min_y, e->max_y));
