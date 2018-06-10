@@ -7,6 +7,8 @@ This project is meant to create graphically beautiful fractals.
 ![alternativetext](screenshots/burning_ship_3.png)
 ### Mandelbrot set:
 ![alternativetext](screenshots/mandelbrot_1.png)
+### Mandelbrot set #2:
+![alternativetext](screenshots/mandelbrot_2.png)
 ### Julia set:
 ![alternativetext](screenshots/julia_1.png)
 ### Julia set #2:
