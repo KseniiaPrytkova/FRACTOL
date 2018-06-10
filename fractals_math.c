@@ -23,8 +23,8 @@ int		mandelbrot_math(t_env *e, int x, int y)
 	e->iteration = 0;
 	mx = 0.0;
 	my = 0.0;
-	c_re = ft_map(x, 0, WIDTH, e->min_x, e->max_x);
-	c_im = ft_map(y, 0, HEIGHT, e->min_y, e->max_y);
+	c_re = ft_map(x, add_params(0, WIDTH, e->min_x, e->max_x));
+	c_im = ft_map(y, add_params(0, HEIGHT, e->min_y, e->max_y));
 	while (e->iteration < e->infinity)
 	{
 		x_temp = (mx * mx - my * my) + c_re;
@@ -42,10 +42,9 @@ int		julia_math(t_env *e, int x, int y)
 	long double mx;
 	long double my;
 	long double x_temp;
-
 	e->iteration = 0;
-	mx = ft_map((long double)x, 0, (long double)WIDTH, e->min_x, e->max_x);
-	my = ft_map((long double)y, 0, (long double)HEIGHT, e->min_y, e->max_y);
+	mx = ft_map(x, add_params(0, WIDTH, e->min_x, e->max_x));
+	my = ft_map(y, add_params(0, HEIGHT, e->min_y, e->max_y));
 	while (e->iteration < e->infinity)
 	{
 		x_temp = (mx * mx - my * my) + e->c_re;
@@ -69,8 +68,8 @@ int		burning_ship_math(t_env *e, int x, int y)
 	e->iteration = 0;
 	mx = 0.0;
 	my = 0.0;
-	c_re = ft_map(x, 0, WIDTH, e->min_x, e->max_x);
-	c_im = ft_map(y, 0, HEIGHT, e->min_y, e->max_y);
+	c_re = ft_map(x, add_params(0, WIDTH, e->min_x, e->max_x));
+	c_im = ft_map(y, add_params(0, HEIGHT, e->min_y, e->max_y));
 	while (e->iteration < e->infinity)
 	{
 		x_temp = (mx * mx - my * my) + c_re;
@@ -108,8 +107,8 @@ int		douady_rabbit(t_env *e, int x, int y)
 	long double x_temp;
 
 	e->iteration = 0;
-	mx = ft_map((long double)x, 0, (long double)WIDTH, e->min_x, e->max_x);
-	my = ft_map((long double)y, 0, (long double)HEIGHT, e->min_y, e->max_y);
+	mx = ft_map((long double)x, add_params(0, WIDTH, e->min_x, e->max_x));
+	my = ft_map((long double)y, add_params(0, HEIGHT, e->min_y, e->max_y));
 	while (e->iteration < e->infinity)
 	{
 		x_temp = (mx * mx - my * my) - 0.123;

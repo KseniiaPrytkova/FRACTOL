@@ -49,8 +49,8 @@ static void		tips(t_env *e)
 	if (e->choose_fractal == 1 || e->choose_fractal == 3 \
 		|| e->choose_fractal == 4 || e->choose_fractal == 5)
 	{
-		ft_putstr("MANDELBROT'S || BURNING_SHIPS'S || \
-			DOUADY_RABBIT'S LEGEND || SIERPINSKI_CARPET'S :\n");
+		ft_putstr("MANDELBROT'S || BURNING_SHIPS'S ");
+		ft_putstr("DOUADY_RABBIT'S LEGEND || SIERPINSKI_CARPET'S:\n");
 		ft_putstr("MOVE: up || down || left || right\n");
 		ft_putstr("ZOOM: mouse wheel || mouse click (left + && right -)\n");
 		ft_putstr("CHANGE COLOR : 1 && 2 && 3 && 4\n");
@@ -72,13 +72,10 @@ static void		tips(t_env *e)
 int				main(int argc, char *argv[])
 {
 	t_env	*e;
-	t_map	*map;
 
 	if (argc == 2 && (arguments_handler(argv[1]) != 0))
 	{
 		if (!(e = malloc(sizeof(t_env))))
-			return (0);
-		if (!(map = malloc(sizeof(t_map))))
 			return (0);
 		if (init_mlx(e) == 0)
 			return (0);

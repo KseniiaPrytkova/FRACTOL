@@ -18,10 +18,6 @@
 # include <math.h>
 # include "../libft/libft.h"
 
-# include <stdio.h> /* for printf and perror()*/
-
-// # define WIDTH 		1200
-// # define HEIGHT		800
 # define 	WIDTH 		800
 # define 	HEIGHT		600
 
@@ -43,15 +39,14 @@
 
 typedef	struct 		s_map
 {
-	long double variable_1;
-	long double min_1;
-	long double max_1;
-	long double min_2;
-	long double max_2;
+	long double 	min_in;
+	long double 	max_in;
+	long double 	min_out;
+	long double 	max_out;
 
 } 					t_map;
 
-typedef struct		s_env 
+typedef struct			s_env 
 {
 	int	(*function)(struct s_env *e, int x, int y);
 	void				*mlx_ptr;
@@ -82,12 +77,10 @@ typedef struct		s_env
 	long double 		move_y;
 	long double			start_y;
 	long double			end_y;
-
-
 }						t_env;
 
 void			init(t_env *e);
-long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2);
+long double		ft_map(long double x, t_map p);
 int				mandelbrot_math(t_env *e, int x, int y);
 int				julia_math(t_env *e, int x, int y);
 int 			burning_ship_math(t_env *e, int x, int y);
@@ -101,5 +94,6 @@ void 			next_draw(t_env *e);
 void			choose_color(t_env *e, int color);
 int				mouse_zoom(int keycode, int x, int y, t_env *e);
 int 			mouse_for_julia(int x, int y, t_env *e);
+t_map 			add_params(long double a, long double b, long double c, long double d);
 
 #endif
