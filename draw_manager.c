@@ -12,7 +12,27 @@
 
 #include "./includes/fractol.h"
 
-void		init(t_env *e)
+static void		which_fractal(t_env *e)
+{
+	if (e->choose_fractal == 1)
+	{
+		e->function = mandelbrot_math;
+	}
+	else if (e->choose_fractal == 2)
+	{
+		e->function = julia_math;
+		e->c_re = -0.70176f;
+		e->c_im = -0.3842f;
+	}
+	else if (e->choose_fractal == 3)
+		e->function = burning_ship_math;
+	else if (e->choose_fractal == 4)
+		e->function = sierpinski_carpet;
+	else if (e->choose_fractal == 5)
+		e->function = douady_rabbit;
+}
+
+void			init(t_env *e)
 {
 	e->function = mandelbrot_math;
 	e->choose_color = 0;
@@ -25,27 +45,10 @@ void		init(t_env *e)
 	e->move_y = 0.0f;
 	e->zoom = 1.0f;
 	e->infinity = 100;
-	if(e->choose_fractal == 1)
-	{
-		e->function = mandelbrot_math;
-	}
-	else if(e->choose_fractal == 2)
-	{
-		e->function = julia_math;
-		e->c_re = -0.70176f;
-		e->c_im = -0.3842f;
-
-
-	}
-	else if(e->choose_fractal == 3)
-		e->function = burning_ship_math;
-	else if(e->choose_fractal == 4)
-		e->function = sierpinski_carpet;
-	else if(e->choose_fractal == 5)
-		e->function = douady_rabbit;
+	which_fractal(e);
 }
 
-void		foreach_pixel(t_env *e)
+void			foreach_pixel(t_env *e)
 {
 	int x;
 	int y;
@@ -66,7 +69,7 @@ void		foreach_pixel(t_env *e)
 	}
 }
 
-void	next_draw(t_env *e)
+void			next_draw(t_env *e)
 {
 	mlx_clear_window(e->mlx_ptr, e->win_ptr);
 	foreach_pixel(e);

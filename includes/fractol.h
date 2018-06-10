@@ -41,58 +41,65 @@
 # define 	SIERPINSKI_CARPET "sierpinski_carpet"
 # define 	DOUADY_RABBIT "douady_rabbit"
 
+typedef	struct 		s_map
+{
+	long double variable_1;
+	long double min_1;
+	long double max_1;
+	long double min_2;
+	long double max_2;
+
+} 					t_map;
 
 typedef struct		s_env 
 {
 	int	(*function)(struct s_env *e, int x, int y);
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*image_ptr;
-	char			*image;
-	int				bpp;
-	int				en;
-	int				ln;
-	float			infinity;
+	void				*mlx_ptr;
+	void				*win_ptr;
+	void				*image_ptr;
+	char				*image;
+	int					bpp;
+	int					en;
+	int					ln;
+	float				infinity;
 	long double			c_re;
 	long double			c_im;
 	long double			min_x;
 	long double			max_x;
 	long double			min_y;
 	long double			max_y;
-	int				red;
-	int				green;
-	int				blue;
-	int				choose_color;
-	int				choose_fractal;
-	int				julia_mode_on;
-	long double 			center_x;
+	int					iteration;
+	int					red;
+	int					green;
+	int					blue;
+	int					choose_color;
+	int					choose_fractal;
+	int					julia_mode_on;
+	long double 		center_x;
 	long double			center_y;
-
 	long double			zoom;
 	long double			move_x;
-	long double 			move_y;
+	long double 		move_y;
 	long double			start_y;
 	long double			end_y;
 
 
-}					t_env;
+}						t_env;
 
-void	init(t_env *e);
+void			init(t_env *e);
 long double		ft_map(long double variable_1, long double min_1, long double max_1, long double min_2, long double max_2);
-int			mandelbrot_math(t_env *e, int x, int y);
-int			julia_math(t_env *e, int x, int y);
-int burning_ship_math(t_env *e, int x, int y);
-int sierpinski_carpet(t_env *e, int x, int y);
-int			douady_rabbit(t_env *e, int x, int y);
-
-
-int			key_draw(int keycode, t_env *e);
-void		foreach_pixel(t_env *e);
-void  		put_pixel_to_img(t_env *e, int x, int y);
-int			init_mlx(t_env *e);
-void 		next_draw(t_env *e);
-void		choose_color(t_env *e, int color);
-int			mouse_zoom(int keycode, int x, int y, t_env *e);
-int 		mouse_for_julia(int x, int y, t_env *e);
+int				mandelbrot_math(t_env *e, int x, int y);
+int				julia_math(t_env *e, int x, int y);
+int 			burning_ship_math(t_env *e, int x, int y);
+int 			sierpinski_carpet(t_env *e, int x, int y);
+int				douady_rabbit(t_env *e, int x, int y);
+int				key_draw(int keycode, t_env *e);
+void			foreach_pixel(t_env *e);
+void  			put_pixel_to_img(t_env *e, int x, int y);
+int				init_mlx(t_env *e);
+void 			next_draw(t_env *e);
+void			choose_color(t_env *e, int color);
+int				mouse_zoom(int keycode, int x, int y, t_env *e);
+int 			mouse_for_julia(int x, int y, t_env *e);
 
 #endif

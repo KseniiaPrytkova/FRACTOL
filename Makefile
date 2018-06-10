@@ -27,7 +27,6 @@ all: $(NAME)
 $(NAME): $(SRO)
 	make -C ./libft/
 	$(CC) $(FLAG) -I$(INCLUDE) $(SRC) -lmlx -framework OpenGL -framework Appkit ./libft/libft.a -o $(NAME)
-	# ar rc $(NAME) $(SRO)
 
 %.o: %.c ./includes/fractol.h
 	$(CC) $(FLAG) -c -o $@ $<
@@ -41,3 +40,4 @@ fclean: clean
 	rm -Rf $(NAME)
 
 re: fclean all
+	

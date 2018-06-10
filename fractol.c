@@ -12,13 +12,13 @@
 
 #include "./includes/fractol.h"
 
-static int	exit_x(void)
+static int		exit_x(void)
 {
 	exit(1);
 	return (0);
 }
 
-static int 	arguments_handler(char *str)
+static int		arguments_handler(char *str)
 {
 	if (ft_strcmp(str, MANDELBROT) == 0)
 		return (1);
@@ -28,57 +28,62 @@ static int 	arguments_handler(char *str)
 		return (3);
 	else if (ft_strcmp(str, SIERPINSKI_CARPET) == 0)
 		return (4);
-		else if (ft_strcmp(str, DOUADY_RABBIT) == 0)
+	else if (ft_strcmp(str, DOUADY_RABBIT) == 0)
 		return (5);
 	else
 		return (0);
 }
 
-static void param_list(void)
+static void		param_list(void)
 {
 	ft_putstr("List of available parameters:\n");
 	ft_putstr("1: "MANDELBROT"\n");
 	ft_putstr("2: "JULIA"\n");
-	ft_putstr("2: "BURNING_SHIP"\n");
-	ft_putstr("2: "SIERPINSKI_CARPET"\n");
-	ft_putstr("2: "DOUADY_RABBIT"\n");
+	ft_putstr("3: "BURNING_SHIP"\n");
+	ft_putstr("4: "SIERPINSKI_CARPET"\n");
+	ft_putstr("5: "DOUADY_RABBIT"\n");
+}
 
-}	
-
-static void	tips(t_env *e)
+static void		tips(t_env *e)
 {
-	if (e->choose_fractal == 1)
+	if (e->choose_fractal == 1 || e->choose_fractal == 3 \
+		|| e->choose_fractal == 4 || e->choose_fractal == 5)
 	{
-		ft_putstr("MANDELBROT'S LEGEND:\n");
+		ft_putstr("MANDELBROT'S || BURNING_SHIPS'S || \
+			DOUADY_RABBIT'S LEGEND || SIERPINSKI_CARPET'S :\n");
 		ft_putstr("MOVE: up || down || left || right\n");
 		ft_putstr("ZOOM: mouse wheel || mouse click (left + && right -)\n");
+		ft_putstr("CHANGE COLOR : 1 && 2 && 3 && 4\n");
 		ft_putstr("CHANGE THE COLOR DEPTH: W || E\n");
+		ft_putstr("RESET: space\n");
 	}
 	else if (e->choose_fractal == 2)
 	{
 		ft_putstr("JULIA'S LEGEND:\n");
 		ft_putstr("MOVE: up || down || left || right\n");
-		ft_putstr("MOVING MODE ON/OFF: space\n");
+		ft_putstr("MOVING MODE ON/OFF: left ctrl\n");
 		ft_putstr("MOVE JULIA: mouse click || mouse cursor\n");
+		ft_putstr("CHANGE COLOR : 1 && 2 && 3 && 4\n");
+		ft_putstr("CHANGE THE COLOR DEPTH: W || E\n");
+		ft_putstr("RESET: space\n");
 	}
-	
 }
-		
 
-
-
-int			main(int argc, char *argv[])
+int				main(int argc, char *argv[])
 {
+	t_env	*e;
+	t_map	*map;
+
 	if (argc == 2 && (arguments_handler(argv[1]) != 0))
 	{
-		t_env 	*e;
-
 		if (!(e = malloc(sizeof(t_env))))
+			return (0);
+		if (!(map = malloc(sizeof(t_map))))
 			return (0);
 		if (init_mlx(e) == 0)
 			return (0);
 		e->choose_fractal = arguments_handler(argv[1]);
-		tips(e);	
+		tips(e);
 		init(e);
 		foreach_pixel(e);
 		next_draw(e);
