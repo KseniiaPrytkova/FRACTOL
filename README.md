@@ -20,6 +20,17 @@ This project is meant to create graphically beautiful fractals.
 3. run `./fractol fractal_name` (ex: `./fractol mandelbrot_set`);
 4. follow the legend that you will see in your terminal window.
 
+In this project i use an image approach for drawing, but multithreading is not implemented, therefore at large values ​​of height and width of the screen the program will work slowly.
+
+What i did implement:
+- [x] It is possible to move the fractal (left, right, up, down);
+- [x] Zoom (mouse wheel or mouse buttons);
+- [x] Changing the depth (so u can see additional color spectrum at each particular section of the fractal);
+- [x] Reset when researching of fractal went too far;
+- [x] Several variants of color representation are chosen;
+- [x] You can change the Julia's coefficients with your mouse, and plunge into the interactive psychedelic of this fractal for a long time;
+- [ ] Multithreading;
+- [ ] 3D representation;
 
 #### Links
 * [List of fractals by Hausdorff dimension](https://en.wikipedia.org/wiki/List_of_fractals_by_Hausdorff_dimension)
