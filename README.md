@@ -22,7 +22,7 @@ This project is meant to create graphically beautiful fractals.
 
 In this project i use an image approach for drawing, but multithreading is not implemented, therefore at large values ​​of height and width of the screen the program will work slowly.
 
-What i did implement:
+### What i did implement:
 - [x] It is possible to move the fractal (left, right, up, down);
 - [x] Zoom (mouse wheel or mouse buttons);
 - [x] Changing the depth (so u can see additional color spectrum at each particular section of the fractal);
