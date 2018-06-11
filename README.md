@@ -14,6 +14,13 @@ This project is meant to create graphically beautiful fractals.
 ### Julia set #2:
 ![alternativetext](screenshots/julia_3.png)
 
+### Run on your local machine:
+1. download `go_FRACTOL` folder;
+2. run `./fractol ` and you will see the list of available fractals;
+3. run `./fractol fractal_name` (ex: `./fractol mandelbrot_set`);
+4. follow the legend that you will see in your terminal window.
+
+
 #### Links
 * [List of fractals by Hausdorff dimension](https://en.wikipedia.org/wiki/List_of_fractals_by_Hausdorff_dimension)
 * [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set)
